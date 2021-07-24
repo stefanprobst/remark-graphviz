@@ -8,9 +8,9 @@ export type Options = {
 } & (
   | never
   | {
-    /**
-     * Folder path where egnerated .svg file will be written to.
-     */
+      /**
+       * Folder path where egnerated .svg file will be written to.
+       */
       outputFolder: string
       /**
        * Folder path which will be used in the `<img>` element's `src` attribute.
