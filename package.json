@@ -2,6 +2,7 @@
   "name": "@stefanprobst/remark-graphviz",
   "version": "1.0.0",
   "main": "src/index.js",
+  "types": "src",
   "type": "module",
   "license": "MIT",
   "files": [
