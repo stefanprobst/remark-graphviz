@@ -67,7 +67,7 @@ describe('remark-graphviz', () => {
           path.join(
             process.cwd(),
             options.outputFolder,
-            '23b93529249047fefb8eda95a0b93f0f.svg',
+            '201e5d6a36c0d17cc401665c7988024f.svg',
           ),
         ),
       ).toBe(true)

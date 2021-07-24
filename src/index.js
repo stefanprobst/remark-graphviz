@@ -20,7 +20,7 @@ const svgoOptions = {
     { name: 'removeDimensions', active: true },
     { name: 'removeViewBox', active: false },
     // {name: 'removeXMLNS', active: true},
-    { name: 'prefixIds', active: true },
+    // { name: 'prefixIds', active: true },
   ]),
 }
 
