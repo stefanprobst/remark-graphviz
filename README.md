@@ -11,6 +11,13 @@ yarn add @stefanprobst/remark-graphviz
 
 ## How to use
 
+Add the plugin to a [`unified`](https://github.com/unifiedjs/unified) pipeline
+which transforms markdown to
+[`hast`](https://github.com/syntax-tree/hast#list-of-utilities) with
+[`remark-rehype`](https://github.com/remarkjs/remark-rehype). Note that the
+plugin runs async, so `processor.runSync()` and `processor.processSync()` will
+not work.
+
 ````js
 import unified from 'unified'
 import fromMarkdown from 'remark-parse'
@@ -36,9 +43,9 @@ digraph {
 Some text after.
 `
 
-const file = processor.processSync(md)
-
-console.log(String(file))
+processor.process(md).then((file) => {
+  console.log(String(file))
+})
 ````
 
 ### Options
@@ -70,6 +77,9 @@ const processor = unified()
 
 This will write the image to `./public/assets/contenthash.svg` and generate
 `<img src="/assets/contenthash.svg" alt="" />`.
+
+Note that relative paths in `outputFolder` are treated as relative to
+`process.cwd()`.
 
 #### `optimize`
 
