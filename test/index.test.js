@@ -46,4 +46,31 @@ describe('remark-graphviz', () => {
 
     it.todo('should show error message when "publicFolder" option is missing')
   })
+
+  describe('optimize option', () => {
+    it('should optimize generated svg element with svgo', async () => {
+      const options = { optimize: true }
+      const result = String(await createProcessor(options).process(doc))
+      expect(result).toMatchSnapshot()
+    })
+
+    it('should optimize generated svg file with svgo', async () => {
+      const options = {
+        outputFolder: './test/__output__',
+        publicFolder: '/',
+        optimize: true,
+      }
+      const result = String(await createProcessor(options).process(doc))
+      expect(result).toMatchSnapshot()
+      expect(
+        fs.existsSync(
+          path.join(
+            process.cwd(),
+            options.outputFolder,
+            '23b93529249047fefb8eda95a0b93f0f.svg',
+          ),
+        ),
+      ).toBe(true)
+    })
+  })
 })

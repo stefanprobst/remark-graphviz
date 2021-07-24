@@ -3,6 +3,7 @@ import * as path from 'path'
 
 import graphviz from '@hpcc-js/wasm'
 import fromHtml from 'rehype-parse'
+import { optimize, extendDefaultPlugins } from 'svgo'
 import unified from 'unified'
 import { visit, SKIP } from 'unist-util-visit'
 
@@ -11,6 +12,17 @@ import { generateContentHash } from './generateContentHash'
 const languages = ['dot', 'graphviz']
 
 const processor = unified().use(fromHtml, { fragment: true, space: 'svg' })
+
+/** @type {import('svgo').OptimizeOptions} */
+const svgoOptions = {
+  multipass: true,
+  plugins: extendDefaultPlugins([
+    { name: 'removeDimensions', active: true },
+    { name: 'removeViewBox', active: false },
+    // {name: 'removeXMLNS', active: true},
+    { name: 'prefixIds', active: true },
+  ]),
+}
 
 export default function attacher(options = {}) {
   return transformer
@@ -34,7 +46,9 @@ export default function attacher(options = {}) {
            */
           node.type = 'paragraph'
 
-          const hast = processor.parse(svg)
+          const svgString =
+            options.optimize === true ? optimize(svg, svgoOptions).data : svg
+          const hast = processor.parse(svgString)
 
           if (options.outputFolder != null) {
             if (options.publicFolder == null) {
@@ -50,11 +64,13 @@ export default function attacher(options = {}) {
               fs.mkdirSync(outputFolder, { recursive: true })
             }
 
-            const fileName = generateContentHash(svg) + '.svg'
+            const fileName = generateContentHash(svgString) + '.svg'
             const destinationFilePath = path.join(outputFolder, fileName)
             const publicFilePath = path.join(options.publicFolder, fileName)
 
-            fs.writeFileSync(destinationFilePath, svg, { encoding: 'utf-8' })
+            fs.writeFileSync(destinationFilePath, svgString, {
+              encoding: 'utf-8',
+            })
 
             node.data = {
               hName: 'figure',

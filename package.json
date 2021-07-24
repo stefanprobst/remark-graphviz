@@ -23,6 +23,7 @@
   "dependencies": {
     "@hpcc-js/wasm": "^1.8.1",
     "rehype-parse": "^7.0.1",
+    "svgo": "^2.3.1",
     "unified": "^9.0.0",
     "unist-util-visit": "^3.1.0"
   },

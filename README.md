@@ -71,6 +71,11 @@ const processor = unified()
 This will write the image to `./public/assets/contenthash.svg` and generate
 `<img src="/assets/contenthash.svg" alt="" />`.
 
+#### `optimize`
+
+When setting `optimize: true`, the generated svg string will be optimized with
+[`svgo`](https://github.com/svg/svgo).
+
 ## TODO
 
 - Allow providing `figcaption` / `alt` text via `node.meta`.
