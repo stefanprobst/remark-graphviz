@@ -7,7 +7,7 @@ import { optimize, extendDefaultPlugins } from 'svgo'
 import unified from 'unified'
 import { visit, SKIP } from 'unist-util-visit'
 
-import { generateContentHash } from './generateContentHash'
+import { generateContentHash } from './generateContentHash.js'
 
 const languages = ['dot', 'graphviz']
 
