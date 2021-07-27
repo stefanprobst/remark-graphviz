@@ -1,7 +1,7 @@
 # `remark-graphviz`
 
 This is a [`remark`](https://github.com/remarkjs/remark) plugin to generate svg
-images from graphviz code blocks.
+images from graphviz (dot) code blocks.
 
 ## How to install
 
@@ -85,6 +85,13 @@ Note that relative paths in `outputFolder` are treated as relative to
 
 When setting `optimize: true`, the generated svg string will be optimized with
 [`svgo`](https://github.com/svg/svgo).
+
+## How to use in the browser
+
+Use `@stefanprobst/remark-graphviz/browser.js`. The only option available is
+[`wasmFolder`](https://github.com/hpcc-systems/hpcc-js-wasm#wasmFolder) to point
+to a location of the required `graphviz.wasm`. It defaults to
+`https://unpkg.com/@hpcc-js/wasm/dist`.
 
 ## TODO
 
