@@ -88,7 +88,7 @@ When setting `optimize: true`, the generated svg string will be optimized with
 
 ## How to use in the browser
 
-Use `@stefanprobst/remark-graphviz/browser.js`. The only option available is
+The only option available is
 [`wasmFolder`](https://github.com/hpcc-systems/hpcc-js-wasm#wasmFolder) to point
 to a location of the required `graphviz.wasm`. It defaults to
 `https://unpkg.com/@hpcc-js/wasm/dist`.
