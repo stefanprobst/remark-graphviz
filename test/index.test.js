@@ -4,7 +4,7 @@ import * as path from 'path'
 import toHtml from 'rehype-stringify'
 import fromMarkdown from 'remark-parse'
 import toHast from 'remark-rehype'
-import unified from 'unified'
+import { unified } from 'unified'
 
 import graphviz from '../src/index.js'
 
@@ -38,7 +38,7 @@ describe('remark-graphviz', () => {
           path.join(
             process.cwd(),
             options.outputFolder,
-            'f7348fe1104f7dab79c8d931cbece7f1.svg',
+            'e756674193b6837ef58eeadc5ff5d7b4.svg',
           ),
         ),
       ).toBe(true)

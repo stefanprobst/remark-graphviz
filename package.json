@@ -1,6 +1,6 @@
 {
   "name": "@stefanprobst/remark-graphviz",
-  "version": "1.1.1",
+  "version": "2.0.0",
   "main": "src/index.js",
   "browser": "src/browser.js",
   "types": "src",
@@ -15,7 +15,7 @@
     "lint": "eslint . --cache --ignore-path .gitignore",
     "lint:fix": "yarn run lint --fix",
     "prepare": "simple-git-hooks",
-    "test": "cross-env NODE_OPTIONS=--experimental-vm-modules jest",
+    "test": "cross-env NODE_OPTIONS='--experimental-vm-modules' jest",
     "validate": "yarn run format && yarn run lint && yarn run test"
   },
   "engines": {
@@ -23,26 +23,26 @@
     "yarn": "1.x"
   },
   "dependencies": {
-    "@hpcc-js/wasm": "^1.8.1",
-    "rehype-parse": "^7.0.1",
-    "svgo": "^2.3.1",
-    "unified": "^9.0.0",
-    "unist-util-visit": "^3.1.0"
+    "@hpcc-js/wasm": "^1.11.0",
+    "rehype-parse": "^8.0.3",
+    "svgo": "^2.5.0",
+    "unified": "^10.1.0",
+    "unist-util-visit": "^4.0.0"
   },
   "devDependencies": {
-    "@commitlint/cli": "^12.1.4",
+    "@commitlint/cli": "^13.1.0",
     "@stefanprobst/commitlint-config": "^1.0.2",
     "@stefanprobst/eslint-config-node": "^2.0.1",
-    "@stefanprobst/prettier-config": "^1.0.4",
+    "@stefanprobst/prettier-config": "^1.0.5",
     "cross-env": "^7.0.3",
-    "eslint": "^7.31.0",
-    "jest": "^27.0.6",
-    "lint-staged": "^11.1.0",
+    "eslint": "^7.32.0",
+    "jest": "^27.1.0",
+    "lint-staged": "^11.1.2",
     "prettier": "^2.3.2",
-    "rehype-stringify": "^8.0.0",
-    "remark-parse": "^9.0.0",
-    "remark-rehype": "^8.1.0",
-    "simple-git-hooks": "^2.5.1"
+    "rehype-stringify": "^9.0.2",
+    "remark-parse": "^10.0.0",
+    "remark-rehype": "^9.0.0",
+    "simple-git-hooks": "^2.6.1"
   },
   "commitlint": {
     "extends": "@stefanprobst/commitlint-config"

@@ -19,7 +19,7 @@ plugin runs async, so `processor.runSync()` and `processor.processSync()` will
 not work.
 
 ````js
-import unified from 'unified'
+import { unified } from 'unified'
 import fromMarkdown from 'remark-parse'
 import withGraphviz from '@stefanprobst/remark-graphviz'
 import toHast from 'remark-rehype'

@@ -1,6 +1,6 @@
 import graphviz from '@hpcc-js/wasm'
 import fromHtml from 'rehype-parse'
-import unified from 'unified'
+import { unified } from 'unified'
 import { visit, SKIP } from 'unist-util-visit'
 
 const languages = ['dot', 'graphviz']
