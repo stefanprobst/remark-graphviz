@@ -3,8 +3,8 @@ import * as path from 'path'
 
 import graphviz from '@hpcc-js/wasm'
 import fromHtml from 'rehype-parse'
-import { optimize, extendDefaultPlugins } from 'svgo'
-import unified from 'unified'
+import { optimize } from 'svgo'
+import { unified } from 'unified'
 import { visit, SKIP } from 'unist-util-visit'
 
 import { generateContentHash } from './generateContentHash.js'
@@ -16,12 +16,19 @@ const processor = unified().use(fromHtml, { fragment: true, space: 'svg' })
 /** @type {import('svgo').OptimizeOptions} */
 const svgoOptions = {
   multipass: true,
-  plugins: extendDefaultPlugins([
-    { name: 'removeDimensions', active: true },
-    { name: 'removeViewBox', active: false },
-    // {name: 'removeXMLNS', active: true},
-    // { name: 'prefixIds', active: true },
-  ]),
+  plugins: [
+    {
+      name: 'preset-default',
+      params: {
+        overrides: {
+          removeViewBox: false,
+        },
+      },
+    },
+    { name: 'removeDimensions' },
+    // { name: 'removeXMLNS' },
+    // { name: 'prefixIds' },
+  ],
 }
 
 export default function attacher(options = {}) {
